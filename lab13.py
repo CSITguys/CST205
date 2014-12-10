@@ -1,5 +1,5 @@
 #CST 205 Multimedia Programming
-#Lab 12 Adventure game
+#Lab 13 Adventure game
 #Brian Carlston
 #David Klier
 #Phillip Powell
