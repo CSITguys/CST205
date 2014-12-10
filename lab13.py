@@ -28,12 +28,7 @@ def game():
     # dictionary of all rooms in the game
     rooms = initializeRooms()
 
-    printNow("*** Welcome to The CSIT Guys\' House of Horrors! ***")
-    printNow("To win the game, search for the secret in the house.")
-    printNow("In each room you will be told which directions you can go.")
-    printNow("You can go north, south, east or west by typing that direction.")
-    printNow("Type help to redisplay this introduction.")
-    printNow("Type exit to quit at any time.")
+    displayHelp()
     userName = requestString("Enter your name:")
     
 
@@ -102,6 +97,7 @@ def parse(userInput):
       if (userInput == "north" or userInput == "south" or userInput == "east" or userInput == "west"):
           return userInput
       elif (userInput == "help" or userInput == "?" or userInput == "h"):
+          printNow("You have choosen to display the Help Menu")
           displayHelp()
           return "help"
       elif (userInput == "exit"):
@@ -141,17 +137,20 @@ def parse(userInput):
         return ""
         
 def displayHelp():
-    printNow("You have choosen to display the Help Menu")
+    
     printNow("")
-    printNow("*** Welcome to The CSIT Guys\' House of Horrors! ***")
-    printNow("In each room you will be told which directions you can go.")
-    printNow("You can to go north, south, east or west by typing that direction.")
-    printNow("Some rooms have items that can taken by typing 'take item'. ")
-    printNow("Some rooms have closets that can be opened by typing 'open closet'. ")
-    printNow("Type inventory or 'i' to display your inventory.")
-    printNow("Items in inventory can be read by typing 'read' then the name of the item e.g. 'read book'. ")
-    printNow("Type help, h, or ? to redisplay this introduction.")
-    printNow("Type exit to quit at any time.")
+    showInformation("*** Welcome to The CSIT Guys\' House of Horrors! ***\n"
+                    "In each room you will be told which directions you can go.\n"
+                    "You can to go north, south, east or west by typing that direction.\n"
+                    "Some rooms have items that can taken by typing 'take item'. \n"
+                    "Some rooms have closets that can be opened by typing 'open closet'. \n"
+                    "Type inventory or 'i' to display your inventory.\n"
+                    "Items in inventory can be read by typing 'read' then the name of the item e.g. 'read book'.\n "
+                    "Type help, h, or ? to redisplay this introduction.\n"
+                    "Type exit to quit at any time.")
+                     
+       
+   
  
  
 def displayInventory(inventory):
@@ -260,15 +259,15 @@ def openCloset():
 
 def loseGame():
     global userName
-    printNow("A monster with a rusty nail bat lunges at you.")
-    printNow("Weaponless, the monster easily bests you. It drags you into the darkness and begins to feast.")
-    printNow("Thanks for playing " + userName + ".")
+    showInformation("A monster with a rusty nail bat lunges at you."
+                    "Weaponless, the monster easily bests you. It drags you into the darkness and begins to feast."
+                    " Thanks for playing " + userName + ".")
 
 #Called when user enters the secret room.         
 def winGame():
     global userName
     roomDescription("secret room")
-    printNow("Congratulations " + userName + " !")
-    printNow("You just knew you would find something useful in this house.")
-    printNow("The End")
+    showInformation("Congratulations " + userName + " !\n"
+                    "You just knew you would find something useful in this house.\n"
+                    "The End")
     return "exit"
