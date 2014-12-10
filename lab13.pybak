@@ -9,6 +9,7 @@
 #Global variables for player inventory and interactive items
 inventory =[]
 items ={}
+userName =""
 #Main function runs game
 def game():
     #constants to make code easier to read
@@ -16,7 +17,8 @@ def game():
     ROOM_NAME = 1
     
     global inventory
-    global items 
+    global items
+    global userName 
     
     userInput = ""
     currentRoom = "porch"
@@ -32,7 +34,7 @@ def game():
     printNow("You can go north, south, east or west by typing that direction.")
     printNow("Type help to redisplay this introduction.")
     printNow("Type exit to quit at any time.")
-    
+    userName = requestString("Enter your name:")
     
 
     while userInput!="exit":
@@ -257,13 +259,16 @@ def openCloset():
         return "exit"
 
 def loseGame():
+    global userName
     printNow("A monster with a rusty nail bat lunges at you.")
     printNow("Weaponless, the monster easily bests you. It drags you into the darkness and begins to feast.")
+    printNow("Thanks for playing " + userName + ".")
 
 #Called when user enters the secret room.         
 def winGame():
+    global userName
     roomDescription("secret room")
-    printNow("Congratulations!")
+    printNow("Congratulations " + userName + " !")
     printNow("You just knew you would find something useful in this house.")
     printNow("The End")
     return "exit"
