@@ -20,6 +20,7 @@ def mainMenu():
                 printNow("Enter a Correct Choice")
             
 def image_manipulator():
+	pictureFile = ""
     while (userInput != 'exit' or userInput != 'back')
         printNow("\nImage Manipulator")
         printNow("Select desired option by entering number")
@@ -27,7 +28,7 @@ def image_manipulator():
         userInput= requestString("Please Enter Your Choice")
         switch(userinput):
             case '1':
-                
+                pictureFile = open_picture()
  
             case else:
                 printNow("Enter a Correct Choice")
