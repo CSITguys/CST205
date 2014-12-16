@@ -5,7 +5,7 @@
 #Phillip Powell
 #David Klier
 #Rahel Tilahun
-
+import string
 def greenEggsCount():
   textFile = pickAFile()
   openFile = open(textFile, "rt")
@@ -34,8 +34,24 @@ def newsFeed():
   textFile = pickAFile()
   openFile = open(textFile, "rt")
   text = openFile.read()
+  printNow("*** Otter Realm Breaking News! ****")
   index  = string.find(text, "<h3 class=\"archive_title\"")
-  print index
-  print text[index:]
+  while index != -1:
+    entryEndpoint = string.find(text,"</h3>")
+    text = text[index:]
+    entryEndpoint = string.find(text,"</a>")
+    startPoint = string.find(text, "k\">")
+  
+    entry = text[startPoint+3:entryEndpoint]
+ 
+    entry = string.lstrip(entry)
+    entry = string.rstrip(entry)
+    entry = entry.replace('&nbsp;'," " )
+    entry = entry.replace('&#8230;'," " );
+    printNow(">>  " + entry)
+    text = text[entryEndpoint:]
+    index  = string.find(text, "<h3 class=\"archive_title\"")
+ 
+ 
     
     
